@@ -21,8 +21,10 @@ print(url)
 driver.get(url)
 owners_link = driver.find_element_by_link_text("OWNERS")
 owners_link.click()
+sleep(2)
 all_link = driver.find_element_by_link_text("ALL")
 all_link.click()
+sleep(2)
 
 # Verify that table loaded
 sleep(1)
