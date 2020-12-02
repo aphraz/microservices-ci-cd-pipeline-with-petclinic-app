@@ -26,16 +26,16 @@ spec:
         io.kompose.service: admin-server
     spec:
       containers:
-        - image: IMAGE_TAG_ADMIN_SERVER
-          name: admin-server
-          ports:
-            - containerPort: 9090
-          resources: {}
+      - image: IMAGE_TAG_ADMIN_SERVER
+        name: admin-server
+        ports:
+          - containerPort: 9090
+        resources: {}
       initContainers:
       - name: init-discovery-server
         image: busybox
         command: ['sh', '-c', 'until nc -z discovery-server:8761; do echo waiting for discovery-server; sleep 2; done;']
       imagePullSecrets:
-        - name: regcred
+      - name: regcred
       restartPolicy: Always
 status: {}

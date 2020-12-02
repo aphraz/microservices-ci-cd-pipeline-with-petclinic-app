@@ -26,16 +26,16 @@ spec:
         io.kompose.service: hystrix-dashboard
     spec:
       containers:
-        - image: IMAGE_TAG_HYSTRIX_DASHBOARD
-          name: hystrix-dashboard
-          ports:
-            - containerPort: 7979
-          resources: {}
+      - image: IMAGE_TAG_HYSTRIX_DASHBOARD
+        name: hystrix-dashboard
+        ports:
+          - containerPort: 7979
+        resources: {}
       initContainers:
       - name: init-discovery-server
         image: busybox
         command: ['sh', '-c', 'until nc -z discovery-server:8761; do echo waiting for discovery-server; sleep 2; done;']
       imagePullSecrets:
-        - name: regcred
+      - name: regcred
       restartPolicy: Always
 status: {}

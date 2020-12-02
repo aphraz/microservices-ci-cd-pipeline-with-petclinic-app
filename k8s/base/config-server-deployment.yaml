@@ -26,11 +26,11 @@ spec:
         io.kompose.service: config-server
     spec:
       containers:
-        - image: IMAGE_TAG_CONFIG_SERVER
-          name: config-server
-          ports:
-            - containerPort: 8888
-          resources: {}
+      - image: IMAGE_TAG_CONFIG_SERVER
+        name: config-server
+        ports:
+          - containerPort: 8888
+        resources: {}
       imagePullSecrets:
         - name: regcred
       restartPolicy: Always

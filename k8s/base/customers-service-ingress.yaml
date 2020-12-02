@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
     kompose.cmd: kompose convert -f docker-compose.yml -o base
     kompose.image-pull-secret: regcred
     kompose.service.expose: petclinic.clarusway.us
@@ -12,11 +13,18 @@ metadata:
   name: customers-service
 spec:
   rules:
-    - host: petclinic.clarusway.us
-      http:
-        paths:
-          - backend:
-              serviceName: customers-service
-              servicePort: 8081
+  - host: petclinic.clarusway.us
+    http:
+      paths:
+      - backend:
+          serviceName: customers-service
+          servicePort: 8081
+        path: /api/gateway(/|$)(.*)
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: customers-service
+          servicePort: 8081
+        path: /api/customer(/|$)(.*)
+        pathType: ImplementationSpecific
 status:
   loadBalancer: {}
