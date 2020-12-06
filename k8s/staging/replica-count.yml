@@ -5,3 +5,11 @@ metadata:
   name: api-gateway
 spec:
   replicas: 3
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+spec:
+  rules:
+  - host: petclinic-staging.clarusway.us
