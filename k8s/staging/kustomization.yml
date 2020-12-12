@@ -3,4 +3,4 @@ namespace: "petclinic-staging-ns"
 bases:
 - ../base
 patches:
-- replica-count.yml
+- patch.yml
